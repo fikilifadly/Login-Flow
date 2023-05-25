@@ -1,12 +1,17 @@
+import { BrowserRouter, Route } from "react-router-dom";
 import Reset from "./pages/Reset";
+import Container from "./components/Container";
 
 let count = 0;
 function App() {
   count++;
   return (
     <>
-      {count}
-      <Reset />
+      <BrowserRouter>
+        <Container>
+          <Reset />
+        </Container>
+      </BrowserRouter>
     </>
   );
 }
