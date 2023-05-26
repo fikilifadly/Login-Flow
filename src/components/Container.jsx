@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Header from "./Header";
 const Container = ({ children }) => {
   return (

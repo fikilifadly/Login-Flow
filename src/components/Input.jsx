@@ -1,9 +1,10 @@
+import { useContext, useState } from "react";
+import { Context } from "./Hoc";
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-
-const Input = ({ type, onChange, ...props }) => {
+const Input = ({ type, onChange, label, name, requiredText, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const { register } = useContext(Context);
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -12,11 +13,15 @@ const Input = ({ type, onChange, ...props }) => {
     <>
       {type.toLowerCase() === "password" ? (
         <div className="flex flex-col gap-2">
+          <label className="text-[#151515] font-semibold text-lg">
+            {label}
+          </label>
           <input
             {...props}
+            {...register(`${name}`, { required: true })}
             type={showPassword ? "text" : "password"}
             onChange={onChange}
-            className="md:w-[250px] w-full py-2 pl-3 text-[12px] shadow-md shadow-[#000333] rounded-sm outline-none"
+            className="md:w-[250px] w-full py-2 pl-3 text-[12px] shadow-md shadow-[#000333] rounded-sm outline-none transition-all duration-150 focus:bg-slate-500 focus:text-white"
           />
           <div className="flex gap-2">
             <input type="checkbox" onChange={togglePassword} />
@@ -24,12 +29,18 @@ const Input = ({ type, onChange, ...props }) => {
           </div>
         </div>
       ) : (
-        <input
-          type={type}
-          onChange={onChange}
-          {...props}
-          className="md:w-[250px] w-full py-2 pl-3 text-[12px] shadow-md shadow-[#000333] rounded-sm outline-none"
-        />
+        <>
+          <label className="text-[#151515] font-semibold text-lg">
+            {label}
+          </label>
+          <input
+            {...props}
+            {...register(`${name}`, { required: requiredText })}
+            type={type}
+            onChange={onChange}
+            className="md:w-[250px] w-full py-2 pl-3 text-[12px] shadow-md shadow-[#000333] rounded-sm outline-none focus:bg-slate-500 focus:text-white"
+          />
+        </>
       )}
     </>
   );

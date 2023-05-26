@@ -1,18 +1,20 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../components/Hoc";
 
 export const usePasswordStrengh = ({ mainPassword, rePassword }) => {
-  const [hasLowerCase, setHasLowerCase] = useState(false);
-  const [hasUpperCase, setHasUpperCase] = useState(false);
-  const [hasNumber, setHasNumber] = useState(false);
-  const [hasSymbol, setHasSymbol] = useState(false);
-  const [hasValidLength, setHasValidLength] = useState(false);
-  const [hasMatch, setHasMatch] = useState(false);
-  const [hasSpace, setHasSpace] = useState(false);
+  console.log("main: ", mainPassword, "second: ", rePassword);
+  const [hasLowerCase, setHasLowerCase] = useState(null);
+  const [hasUpperCase, setHasUpperCase] = useState(null);
+  const [hasNumber, setHasNumber] = useState(null);
+  const [hasSymbol, setHasSymbol] = useState(null);
+  const [hasValidLength, setHasValidLength] = useState(null);
+  const [hasMatch, setHasMatch] = useState(null);
+  const [hasSpace, setHasSpace] = useState(null);
 
   useEffect(() => {
-    setHasLowerCase(mainPassword.toLowerCase() !== mainPassword);
-    setHasUpperCase(mainPassword.toUpperCase() !== mainPassword);
+    setHasLowerCase(mainPassword.toUpperCase() !== mainPassword);
+    setHasUpperCase(mainPassword.toLowerCase() !== mainPassword);
     setHasNumber(/\d/.test(mainPassword));
     setHasSymbol(/[`!@#$%^&*()_+\-=\]{};':"]/.test(mainPassword));
     setHasValidLength(/.{8,}/.test(mainPassword));

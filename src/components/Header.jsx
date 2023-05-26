@@ -22,8 +22,8 @@ function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="text-white">
-                  Logout
+                <NavLink to="/signup" className="text-white">
+                  Sign Up
                 </NavLink>
               </li>
             </ul>
