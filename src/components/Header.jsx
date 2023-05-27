@@ -26,6 +26,11 @@ function Header() {
                   Sign Up
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/reset" className="text-white">
+                  Reset
+                </NavLink>
+              </li>
             </ul>
           </div>
         </nav>

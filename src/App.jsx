@@ -3,6 +3,7 @@ import Reset from "./pages/Reset";
 import Container from "./components/Container";
 import Hoc from "./components/Hoc";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Route>
                 <Route path="/" element={<Login />} />
                 <Route path="/reset" element={<Reset />} />
+                <Route path="/signup" element={<SignUp />} />
               </Route>
             </Routes>
           </Hoc>
